@@ -3,7 +3,7 @@
 # DSA --> LCS --> by Top Down
 
 '''
-Longest Common Subsequence Problem solution using recursion (Memo)
+Longest Common Subsequence Problem solution using Top down
 Given two sequences, find the length of longest subsequence present in both of them.
 A subsequence is a sequence that appears in the same relative order, but not necessarily contiguous. 
 
@@ -11,7 +11,7 @@ For example, “abc”,  “abg”, “bdf”, “aeg”,  ”acefg”, .. etc a
 '''
 
 
-def LCS_Top_down(str1,str2):
+def LCS_Top_down(str1,str2,get_matrix=False):
 
     #  if length of str1 or str2 is zero then 'LCS' will also be zero else we will put default value of -1.
     matrix = [ [ 0 if (c == 0 or r == 0) else -1 for c in range(len(str2) + 1)] for r in range(len(str1) + 1) ]
@@ -29,7 +29,10 @@ def LCS_Top_down(str1,str2):
 
             else:
 
-                matrix[m][n] = max(matrix[m][n-1],matrix[m-1][n])        
+                matrix[m][n] = max(matrix[m][n-1],matrix[m-1][n])  
+
+    if get_matrix:
+        return matrix                  
 
     return matrix[len(str1)][len(str2)]                
 
