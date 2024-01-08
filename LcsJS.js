@@ -1,10 +1,6 @@
 /*  -- Byimaan -- */
 
-
-const str1 = "abcdgh"
-const str2 = "abedfha"
-
-const LcsByTopDown = (str1,str2) => {
+const LcsByTopDown = (str1,str2,getMatrix=false) => {
 
     var [l1, l2] = [str1.length, str2.length];
 
@@ -34,10 +30,15 @@ const LcsByTopDown = (str1,str2) => {
         };
     };
 
-    return matrix[l1][l2];
-
+    return getMatrix ? matrix : matrix[l1][l2]
 };     
 
+if (require.main === module) {
 
-console.log(LcsByTopDown(str1,str2));
+    const str1 = "abcdgh";
+    const str2 = "abedfha";
+    console.log(LcsByTopDown(str1,str2));
 
+};
+
+module.exports = LcsByTopDown;
